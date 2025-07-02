@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BachelorsPhSalesProcessor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" WindowStartupLocation="CenterScreen" Height="450" Width="800">
 
+    <Grid x:Name="GrdMain" Style="{StaticResource PageStyle}" Margin="4 4 4 4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="26"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+                    <Button x:Name="BtnProcess" Content="Process" ToolTip="Process" Margin="0 0 0 0" Style="{StaticResource BlankButtonStyle}" Foreground="#FFFFFF" Click="BtnProcess_Click"/>
+                    <Button x:Name="BtnClose" Content="Close" ToolTip="Close" Margin="0 0 0 0" Style="{StaticResource BlankButtonStyle}" Foreground="#FFFFFF" Click="BtnClose_Click"/>
+                </DockPanel>
+                <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left">
+                    <Label Content="Filename and Path:" Style="{StaticResource LabelFieldStyle}"/>
+                    <TextBox x:Name="TxtFilePath" Style="{StaticResource TextFieldStyle}" Width="380"/>
+                    <Button x:Name="BtnOpen" Content="Open" ToolTip="Open" Margin="0 0 0 0" Style="{StaticResource BlankButtonStyle1}" Foreground="#FFFFFF" Width="120" Click="BtnOpen_Click"/>
+                </DockPanel>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>
