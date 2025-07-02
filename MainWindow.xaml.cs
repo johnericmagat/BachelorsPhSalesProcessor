@@ -14,10 +14,8 @@ namespace BachelorsPhSalesProcessor
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string fileLocation;
-        private string fileName;
-
-        DataTable salesCSV;
+        private string fileLocation = "";
+        private string fileName = "";
 
         public MainWindow()
         {
@@ -26,12 +24,7 @@ namespace BachelorsPhSalesProcessor
 
         private void Process()
         {
-            GetSalesCSV();
-        }
-
-        private void GetSalesCSV()
-        {
-            salesCSV = new DataTable();
+            DataTable sales = new DataTable();
 
             using var reader = new StreamReader(fileLocation);
             using var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -42,7 +35,7 @@ namespace BachelorsPhSalesProcessor
             });
 
             using var dr = new CsvDataReader(csv);
-            salesCSV.Load(dr);
+            sales.Load(dr);
         }
 
 
