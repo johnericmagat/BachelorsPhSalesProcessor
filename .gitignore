@@ -1,0 +1,89 @@
+# Build results
+bin/
+obj/
+out/
+
+# Visual Studio files
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider/JetBrains IDE
+.idea/
+*.sln.iml
+
+# Mac/Linux hidden files
+.DS_Store
+*.swp
+*.swo
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Dotnet build
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.dbmdl
+*.db
+
+# EF Core Migrations (optional: keep if tracking)
+# Uncomment if you want to ignore migrations
+# Migrations/
+
+# User secrets
+secrets.json
+
+# App settings (optional — keep if you want to ignore dev secrets)
+appsettings.Development.json
+appsettings.Local.json
+
+# Auto-generated files
+Generated_Code/
+
+# Publish output
+publish/
+wwwroot/
+
+# Logs
+*.log
+Logs/
+
+# Temporary files
+*.tmp
+*.bak
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+# VS Code settings
+.vscode/
+
+# Test Results
+TestResults/
+*.coverage
+*.coveragejson
+*.vspx
+
+# Windows crash dumps
+*.dmp
+
+# Local SQLite DBs (if used)
+*.db
+*.sqlite
+
+# Entity Framework tools cache
+*.efml
+
+# Rider .idea folder
+.idea/
