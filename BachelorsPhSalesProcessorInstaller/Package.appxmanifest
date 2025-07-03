@@ -9,7 +9,7 @@
   <Identity
     Name="d3639736-2fc5-4794-b8a4-04e9a555af32"
     Publisher="CN=Bachelors 2026"
-    Version="1.0.1.0" />
+    Version="1.0.2.0" />
 
   <Properties>
     <DisplayName>BachelorsPhSalesProcessorInstaller</DisplayName>

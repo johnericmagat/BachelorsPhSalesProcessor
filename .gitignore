@@ -1,90 +1,98 @@
-# Build results
+##############################
+# .NET Core / .NET 8
+##############################
 bin/
 obj/
-out/
-
-# Visual Studio files
-.vscode/
+publish/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
+*.pdb
+*.mdb
+*.vsp
+*.vspx
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.msixupload
+*.nupkg
+*.snupkg
+*.Publish.xml
+*.wapproj.FileListAbsolute.txt
+*.dbmdl
 
-# Rider/JetBrains IDE
+##############################
+# MSIX / Packaging Project
+##############################
+AppPackages/
+*.cer
+*.ps1
+*.appinstaller
+*.msixmap
+*.pri
+*.eappx
+
+##############################
+# NuGet
+##############################
+.nuget/
+packages/
+project.lock.json
+project.assets.json
+Package.StoreAssociation.xml
+
+##############################
+# Visual Studio
+##############################
+.vs/
+*.vc.db
+*.VC.db
+*.ncb
+*.sdf
+*.opensdf
+*.tlog
+*.idb
+*.ipch
+*.cache
+*.log
+
+##############################
+# Rider / JetBrains
+##############################
 .idea/
 *.sln.iml
 
-# Mac/Linux hidden files
-.DS_Store
-*.swp
-*.swo
-
-# NuGet packages
-*.nupkg
-*.snupkg
-packages/
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# Dotnet build
-*.dll
-*.exe
-*.pdb
-*.cache
-*.log
-*.dbmdl
-*.db
-
-# EF Core Migrations (optional: keep if tracking)
-# Uncomment if you want to ignore migrations
-# Migrations/
-
-# User secrets
-secrets.json
-
-# App settings (optional — keep if you want to ignore dev secrets)
-appsettings.Development.json
-appsettings.Local.json
-
-# Auto-generated files
-Generated_Code/
-
-# Publish output
-publish/
-wwwroot/
-
-# Logs
-*.log
-Logs/
-
-# Temporary files
-*.tmp
-*.bak
-
-# Resharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-
-# VS Code settings
-.vscode/
-
-# Test Results
+##############################
+# Test Projects
+##############################
 TestResults/
 *.coverage
-*.coveragejson
-*.vspx
+*.coveragexml
+*.trx
 
-# Windows crash dumps
-*.dmp
+##############################
+# OS files
+##############################
+.DS_Store
+Thumbs.db
+desktop.ini
+ehthumbs.db
 
-# Local SQLite DBs (if used)
-*.db
-*.sqlite
+##############################
+# Build Tools / Tooling
+##############################
+*.bak
+*.orig
+*.rej
+*.scc
+*.vspscc
 
-# Entity Framework tools cache
-*.efml
+##############################
+# Dotnet Tools
+##############################
+*.dotnet-tools.json
 
-# Rider .idea folder
-.idea/
-.vs/
+# Optional (if you're using GitHub Codespaces or similar)
+.vscode/
