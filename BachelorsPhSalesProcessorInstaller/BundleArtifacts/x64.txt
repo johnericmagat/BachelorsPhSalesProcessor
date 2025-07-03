@@ -1,0 +1,2 @@
+MainPackage=D:\BRBI\Projects\BachelorsPhSalesProcessor\BachelorsPhSalesProcessorInstaller\bin\x64\Release\BachelorsPhSalesProcessorInstaller_1.0.1.0_x64.appx
+SymbolPackage=D:\BRBI\Projects\BachelorsPhSalesProcessor\BachelorsPhSalesProcessorInstaller\obj\x64\Release\Symbols\BachelorsPhSalesProcessorInstaller_1.0.1.0_x64.appxsym
