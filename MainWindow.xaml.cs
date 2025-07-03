@@ -61,7 +61,7 @@ namespace BachelorsPhSalesProcessor
                 double value = inserted / (count - errorCount);
                 double progress = value * 100;
 
-                Thread.Sleep(500);
+                Thread.Sleep(100);
 
                 ProgProcess.Dispatcher.Invoke(() => ProgProcess.Value = progress, DispatcherPriority.Background);
             }
