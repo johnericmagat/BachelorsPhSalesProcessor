@@ -82,6 +82,23 @@ namespace BachelorsPhSalesProcessor
 
 
 
+        private void BtnOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.DefaultExt = ".csv";
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
+
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                string filename = openFileDialog.FileName;
+                TxtFilePath.Text = filename;
+                fileLocation = filename;
+                fileName = filename.Split('\\')[filename.Split('\\').Length - 1];
+            }
+        }
+
         private void BtnProcess_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Start processing?", "PROCESS",
@@ -99,23 +116,6 @@ namespace BachelorsPhSalesProcessor
             if (result == MessageBoxResult.Yes)
             {
                 System.Windows.Application.Current.Shutdown();
-            }
-        }
-
-        private void BtnOpen_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.DefaultExt = ".csv";
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
-
-            Nullable<bool> result = openFileDialog.ShowDialog();
-            if (result == true)
-            {
-                string filename = openFileDialog.FileName;
-                TxtFilePath.Text = filename;
-                fileLocation = filename;
-                fileName = filename.Split('\\')[filename.Split('\\').Length - 1];
             }
         }
     }
