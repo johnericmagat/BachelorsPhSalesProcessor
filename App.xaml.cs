@@ -1,4 +1,7 @@
-﻿using BachelorsPhSalesProcessor.Infrastructure;
+﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
+using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
+using BachelorsPhSalesProcessor.Infrastructure;
+using BachelorsPhSalesProcessor.Services.BrbRaw;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +13,7 @@ namespace BachelorsPhSalesProcessor
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App : System.Windows.Application
     {
         public static IHost AppHost { get; private set; }
 
@@ -24,14 +27,30 @@ namespace BachelorsPhSalesProcessor
                 .ConfigureServices((context, services) =>
                 {
                     string connectionString = context.Configuration.GetConnectionString("SalesDB");
+                    string brbRawConnectionString = context.Configuration.GetConnectionString("BrbRawDB");
 
+                    // Register DbContext (EF Core)
                     services.AddDbContext<SalesDbContext>(options =>
                         options.UseSqlServer(connectionString));
 
-                    // Register other services and windows
+                    // Register Dapper contexts
                     services.AddDapperContext(options =>
                         options.ConnectionString = connectionString);
 
+                    services.AddDapperContext(options =>
+                        options.ConnectionString = brbRawConnectionString);
+
+                    // Register MediatR handlers
+                    services.AddMediatR(cfg =>
+                    {
+                        cfg.RegisterServicesFromAssembly(typeof(SalesService).Assembly);
+                    });
+
+                    // Register core services
+                    services.AddScoped<ISalesService, SalesService>();
+                    services.AddScoped<IBrbRawRepository, BrbRawRepository>();
+
+                    // Register the WPF Main Window
                     services.AddSingleton<MainWindow>();
                 })
                 .Build();

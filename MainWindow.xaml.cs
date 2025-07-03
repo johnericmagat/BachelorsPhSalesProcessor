@@ -1,5 +1,7 @@
-﻿using CsvHelper;
+﻿using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
+using CsvHelper;
 using CsvHelper.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
 using System.Globalization;
 using System.IO;
@@ -15,15 +17,21 @@ namespace BachelorsPhSalesProcessor
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ISalesService _salesService;
+        private readonly ILogger<MainWindow> _logger;
+
         private string fileLocation = "";
         private string fileName = "";
 
-        public MainWindow()
+        public MainWindow(ISalesService salesService, ILogger<MainWindow> logger)
         {
             InitializeComponent();
+
+            _salesService = salesService;
+            _logger = logger;
         }
 
-        private void Process()
+        private async Task ProcessAsync()
         {
             DataTable sales = new DataTable();
 
@@ -37,6 +45,8 @@ namespace BachelorsPhSalesProcessor
 
             using var dr = new CsvDataReader(csv);
             sales.Load(dr);
+
+            var result = await _salesService.GetSalesAsync();
 
             TxtRecords.Text = sales.Rows.Count.ToString();
 
@@ -105,7 +115,7 @@ namespace BachelorsPhSalesProcessor
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
-                Process();
+                ProcessAsync();
             }
         }
 
