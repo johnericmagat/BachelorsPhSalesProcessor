@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System.Globalization;
 using System.IO;
 using System.Windows;
+using System.Windows.Threading;
 using DataTable = System.Data.DataTable;
 using Window = System.Windows.Window;
 
@@ -36,6 +37,45 @@ namespace BachelorsPhSalesProcessor
 
             using var dr = new CsvDataReader(csv);
             sales.Load(dr);
+
+            TxtRecords.Text = sales.Rows.Count.ToString();
+
+            double count = 0;
+            double inserted = 0;
+            bool hasError = false;
+            int errorCount = 0;
+
+            foreach (var item in sales.Rows)
+            {
+                count = sales.Rows.Count;
+
+                if (!hasError)
+                {
+                    inserted++;
+                }
+                else
+                {
+                    errorCount++;
+                }
+
+                double value = inserted / (count - errorCount);
+                double progress = value * 100;
+
+                Thread.Sleep(500);
+
+                ProgProcess.Dispatcher.Invoke(() => ProgProcess.Value = progress, DispatcherPriority.Background);
+            }
+
+            string content = " record(s) has been successfully inserted.";
+
+            if (hasError)
+            {
+                content = " record(s) has been successfully inserted.\nThere is/are {0} record(s) not inserted.";
+                content = String.Format(content, errorCount);
+            }
+
+            MessageBox.Show((count - errorCount).ToString(CultureInfo.InvariantCulture) + content, "FINISHED",
+                MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
 
