@@ -46,7 +46,7 @@ namespace BachelorsPhSalesProcessor
             using var dr = new CsvDataReader(csv);
             sales.Load(dr);
 
-            var result = await _salesRawService.GetSalesRawAsync();
+            var salesRawResult = await _salesRawService.GetSalesRawAsync();
 
             TxtRecords.Text = sales.Rows.Count.ToString();
 
