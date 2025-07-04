@@ -1,6 +1,6 @@
-﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
-using BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw;
+﻿using BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw;
 using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
+using BachelorsPhSalesProcessor.Infrastructure.Dapper.Context;
 using Dapper;
 using Microsoft.Extensions.Logging;
 using System.Data;
@@ -9,12 +9,12 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
 {
     public class BrbRawRepository : IBrbRawRepository
     {
-        private IDapperContext _queryContext { get; }
+        private readonly IBrbRawDapperContext _context;
         private readonly ILogger<BrbRawRepository> _logger;
 
-        public BrbRawRepository(IDapperContext queryContext, ILogger<BrbRawRepository> logger)
+        public BrbRawRepository(IBrbRawDapperContext context, ILogger<BrbRawRepository> logger)
         {
-            _queryContext = queryContext;
+            _context = context;
             _logger = logger;
         }
 
@@ -22,7 +22,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
         {
             try
             {
-                using (var connection = _queryContext.DatabaseConnection)
+                using (var connection = _context.Connection)
                 {
                     var parameters = new DynamicParameters();
 
@@ -42,7 +42,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
         {
             try
             {
-                using (var connection = _queryContext.DatabaseConnection)
+                using (var connection = _context.Connection)
                 {
                     var parameters = new DynamicParameters();
                     parameters.Add("@PublicId", publicId);

@@ -2,6 +2,7 @@
 using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
 using BachelorsPhSalesProcessor.Infrastructure;
 using BachelorsPhSalesProcessor.Infrastructure.BrbRaw;
+using BachelorsPhSalesProcessor.Infrastructure.Dapper.Context;
 using BachelorsPhSalesProcessor.Infrastructure.Sales;
 using BachelorsPhSalesProcessor.Services.BrbRaw;
 using Microsoft.EntityFrameworkCore;
@@ -28,34 +29,34 @@ namespace BachelorsPhSalesProcessor
                 })
                 .ConfigureServices((context, services) =>
                 {
-                    string connectionString = context.Configuration.GetConnectionString("SalesDB");
-                    string brbRawConnectionString = context.Configuration.GetConnectionString("BrbRawDB");
+                    var connectionString = context.Configuration.GetConnectionString("SalesDB");
+                    var brbRawConnectionString = context.Configuration.GetConnectionString("BrbRawDB");
 
-                    // Register DbContext (EF Core)
+                    // EF Core contexts
                     services.AddDbContext<SalesDbContext>(options =>
                         options.UseSqlServer(connectionString));
 
                     services.AddDbContext<BrbRawDbContext>(options =>
                         options.UseSqlServer(brbRawConnectionString));
 
-                    // Register Dapper contexts
-                    services.AddDapperContext(options =>
-                        options.ConnectionString = connectionString);
+                    // Dapper contexts
+                    services.Configure<DapperContextOptions>("Sales", o => o.ConnectionString = connectionString);
+                    services.Configure<DapperContextOptions>("BrbRaw", o => o.ConnectionString = brbRawConnectionString);
 
-                    services.AddDapperContext(options =>
-                        options.ConnectionString = brbRawConnectionString);
+                    services.AddTransient<ISalesDapperContext, SalesDapperContext>();
+                    services.AddTransient<IBrbRawDapperContext, BrbRawDapperContext>();
 
-                    // Register MediatR handlers
+                    // MediatR
                     services.AddMediatR(cfg =>
                     {
                         cfg.RegisterServicesFromAssembly(typeof(SalesRawService).Assembly);
                     });
 
-                    // Register core services
+                    // Application services
                     services.AddScoped<ISalesRawService, SalesRawService>();
                     services.AddScoped<IBrbRawRepository, BrbRawRepository>();
 
-                    // Register the WPF Main Window
+                    // WPF
                     services.AddSingleton<MainWindow>();
                 })
                 .Build();

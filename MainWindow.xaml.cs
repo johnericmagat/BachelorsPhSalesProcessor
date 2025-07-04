@@ -1,5 +1,4 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
-using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.Extensions.Logging;
@@ -7,7 +6,6 @@ using Microsoft.Win32;
 using System.Data;
 using System.Globalization;
 using System.IO;
-using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Threading;
 using DataTable = System.Data.DataTable;
@@ -64,7 +62,6 @@ namespace BachelorsPhSalesProcessor
                 {
                     var salesPID = row["Sales PID"];
                     var salesRawDetailResult = await _salesRawService.GetSalesRawDetailByPublicIdAsync((string)salesPID);
-
 
                     inserted++;
                 }
