@@ -29,8 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Application\Commands\" />
-    <Folder Include="DbModelBuilder\BrbRaw\Sales\" />
-    <Folder Include="DbSet\BrbRaw\Sales\" />
     <Folder Include="Mappings\" />
   </ItemGroup>
 

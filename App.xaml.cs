@@ -1,6 +1,8 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
 using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
 using BachelorsPhSalesProcessor.Infrastructure;
+using BachelorsPhSalesProcessor.Infrastructure.BrbRaw;
+using BachelorsPhSalesProcessor.Infrastructure.Sales;
 using BachelorsPhSalesProcessor.Services.BrbRaw;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +34,9 @@ namespace BachelorsPhSalesProcessor
                     // Register DbContext (EF Core)
                     services.AddDbContext<SalesDbContext>(options =>
                         options.UseSqlServer(connectionString));
+
+                    services.AddDbContext<BrbRawDbContext>(options =>
+                        options.UseSqlServer(brbRawConnectionString));
 
                     // Register Dapper contexts
                     services.AddDapperContext(options =>

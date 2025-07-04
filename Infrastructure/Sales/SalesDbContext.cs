@@ -5,7 +5,7 @@ using BachelorsPhSalesProcessor.DbSet;
 using BachelorsPhSalesProcessor.DbSet.Collection;
 using Microsoft.EntityFrameworkCore;
 
-namespace BachelorsPhSalesProcessor.Infrastructure
+namespace BachelorsPhSalesProcessor.Infrastructure.Sales
 {
     public class SalesDbContext : DbContext
     {

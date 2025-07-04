@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace BachelorsPhSalesProcessor.Infrastructure
+namespace BachelorsPhSalesProcessor.Infrastructure.Sales
 {
     public class SalesDbContextFactory : IDesignTimeDbContextFactory<SalesDbContext>
     {

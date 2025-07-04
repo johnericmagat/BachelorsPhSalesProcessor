@@ -4,7 +4,7 @@ using Dapper;
 using Microsoft.Extensions.Logging;
 using System.Data;
 
-namespace BachelorsPhSalesProcessor.Infrastructure
+namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
 {
     public class BrbRawRepository : IBrbRawRepository
     {

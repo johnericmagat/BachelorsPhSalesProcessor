@@ -1,6 +1,6 @@
-﻿namespace BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw
+﻿namespace BachelorsPhSalesProcessor.DbSet.BrbRaw.SalesRaw
 {
-    public class SalesRawResponseDto
+    public class SalesRawDbSet
     {
         public int? Id { get; set; }
         public string? Public_Id { get; set; }
@@ -18,9 +18,9 @@
         public decimal? BrokerIncentive { get; set; }
         public string? Acct_Receivables_Rep_Flag { get; set; }
         public string? Acct_Receivables_Rep_Entity_Flag { get; set; }
-        public string? Create_Date { get; set; }
+        public DateTime? Create_Date { get; set; }
         public string? Create_User { get; set; }
-        public string? Update_Date { get; set; }
+        public DateTime? Update_Date { get; set; }
         public string? Update_User { get; set; }
         public string? Delete_Flag { get; set; }
     }
