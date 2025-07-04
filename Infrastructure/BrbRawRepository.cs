@@ -17,7 +17,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure
             _logger = logger;
         }
 
-        public async Task<IEnumerable<SalesResponseDto>> GetSalesAsync()
+        public async Task<IEnumerable<SalesRawResponseDto>> GetSalesRawAsync()
         {
             try
             {
@@ -25,9 +25,9 @@ namespace BachelorsPhSalesProcessor.Infrastructure
                 {
                     var parameters = new DynamicParameters();
 
-                    var sales = (await connection.QueryAsync<SalesResponseDto>("GetSales", parameters, commandType: CommandType.StoredProcedure)).ToList();
+                    var salesRaw = (await connection.QueryAsync<SalesRawResponseDto>("GetSales", parameters, commandType: CommandType.StoredProcedure)).ToList();
 
-                    return sales;
+                    return salesRaw;
                 }
             }
             catch (Exception ex)

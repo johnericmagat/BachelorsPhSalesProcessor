@@ -17,17 +17,17 @@ namespace BachelorsPhSalesProcessor
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ISalesService _salesService;
+        private readonly ISalesRawService _salesRawService;
         private readonly ILogger<MainWindow> _logger;
 
         private string fileLocation = "";
         private string fileName = "";
 
-        public MainWindow(ISalesService salesService, ILogger<MainWindow> logger)
+        public MainWindow(ISalesRawService salesRawService, ILogger<MainWindow> logger)
         {
             InitializeComponent();
 
-            _salesService = salesService;
+            _salesRawService = salesRawService;
             _logger = logger;
         }
 
@@ -46,7 +46,7 @@ namespace BachelorsPhSalesProcessor
             using var dr = new CsvDataReader(csv);
             sales.Load(dr);
 
-            var result = await _salesService.GetSalesAsync();
+            var result = await _salesRawService.GetSalesRawAsync();
 
             TxtRecords.Text = sales.Rows.Count.ToString();
 

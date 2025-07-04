@@ -4,18 +4,18 @@ using MediatR;
 
 namespace BachelorsPhSalesProcessor.Application.Queries.BrbRaw
 {
-    public class GetSalesHandler : IRequestHandler<GetSalesQuery, IEnumerable<SalesResponseDto>>
+    public class GetSalesRawHandler : IRequestHandler<GetSalesRawQuery, IEnumerable<SalesRawResponseDto>>
     {
         private readonly IBrbRawRepository _brbRawRepository;
 
-        public GetSalesHandler(IBrbRawRepository brbRawRepository)
+        public GetSalesRawHandler(IBrbRawRepository brbRawRepository)
         {
             _brbRawRepository = brbRawRepository;
         }
 
-        public async Task<IEnumerable<SalesResponseDto>> Handle(GetSalesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<SalesRawResponseDto>> Handle(GetSalesRawQuery request, CancellationToken cancellationToken)
         {
-            var result = await _brbRawRepository.GetSalesAsync();
+            var result = await _brbRawRepository.GetSalesRawAsync();
 
             return result;
         }

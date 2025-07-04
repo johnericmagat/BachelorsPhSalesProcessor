@@ -2,8 +2,8 @@
 
 namespace BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw
 {
-    public interface ISalesService
+    public interface ISalesRawService
     {
-        Task<IEnumerable<SalesResponseDto>> GetSalesAsync();
+        Task<IEnumerable<SalesRawResponseDto>> GetSalesRawAsync();
     }
 }

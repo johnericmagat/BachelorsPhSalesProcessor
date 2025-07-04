@@ -43,11 +43,11 @@ namespace BachelorsPhSalesProcessor
                     // Register MediatR handlers
                     services.AddMediatR(cfg =>
                     {
-                        cfg.RegisterServicesFromAssembly(typeof(SalesService).Assembly);
+                        cfg.RegisterServicesFromAssembly(typeof(SalesRawService).Assembly);
                     });
 
                     // Register core services
-                    services.AddScoped<ISalesService, SalesService>();
+                    services.AddScoped<ISalesRawService, SalesRawService>();
                     services.AddScoped<IBrbRawRepository, BrbRawRepository>();
 
                     // Register the WPF Main Window

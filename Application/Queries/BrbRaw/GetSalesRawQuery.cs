@@ -3,9 +3,9 @@ using MediatR;
 
 namespace BachelorsPhSalesProcessor.Application.Queries.BrbRaw
 {
-    public class GetSalesQuery : IRequest<IEnumerable<SalesResponseDto>>
+    public class GetSalesRawQuery : IRequest<IEnumerable<SalesRawResponseDto>>
     {
-        public GetSalesQuery()
+        public GetSalesRawQuery()
         {
         }
     }

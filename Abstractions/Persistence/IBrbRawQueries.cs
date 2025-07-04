@@ -4,6 +4,6 @@ namespace BachelorsPhSalesProcessor.Abstractions.Persistence
 {
     public interface IBrbRawQueries
     {
-        Task<IEnumerable<SalesResponseDto>> GetSalesAsync();
+        Task<IEnumerable<SalesRawResponseDto>> GetSalesRawAsync();
     }
 }
