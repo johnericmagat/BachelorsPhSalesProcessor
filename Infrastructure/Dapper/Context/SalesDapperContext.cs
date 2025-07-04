@@ -10,7 +10,8 @@ namespace BachelorsPhSalesProcessor.Infrastructure.Dapper.Context
 
         public SalesDapperContext(IOptionsMonitor<DapperContextOptions> options)
         {
-            _connectionString = options.Get("Sales").ConnectionString;
+            _connectionString = options.Get("Sales")?.ConnectionString
+                ?? throw new ArgumentNullException("Sales connection string not found.");
         }
 
         public IDbConnection Connection => new SqlConnection(_connectionString);

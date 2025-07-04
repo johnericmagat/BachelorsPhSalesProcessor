@@ -8,27 +8,16 @@ namespace BachelorsPhSalesProcessor.Infrastructure.Dapper.Extensions
     {
         public static IServiceCollection AddDapperContexts(this IServiceCollection services, IConfiguration configuration)
         {
-            // Bind named options
-            services.Configure<DapperContextOptions>("Sales", configuration.GetSection("ConnectionStrings:SalesDB").ToDapperOption());
-            services.Configure<DapperContextOptions>("BrbRaw", configuration.GetSection("ConnectionStrings:BrbRawDB").ToDapperOption());
+            services.Configure<DapperContextOptions>("Sales", o =>
+                o.ConnectionString = configuration.GetConnectionString("SalesDB"));
 
-            // Register context classes
+            services.Configure<DapperContextOptions>("BrbRaw", o =>
+                o.ConnectionString = configuration.GetConnectionString("BrbRawDB"));
+
             services.AddTransient<ISalesDapperContext, SalesDapperContext>();
             services.AddTransient<IBrbRawDapperContext, BrbRawDapperContext>();
 
             return services;
-        }
-
-        // Helper to wrap a string connection into IOptions section
-        private static IConfigurationSection ToDapperOption(this IConfigurationSection section)
-        {
-            return new ConfigurationBuilder()
-                .AddInMemoryCollection(new Dictionary<string, string?>
-                {
-                { "ConnectionString", section.Value }
-                })
-                .Build()
-                .GetSection("");
         }
     }
 }

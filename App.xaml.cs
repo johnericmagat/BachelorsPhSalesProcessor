@@ -2,7 +2,7 @@
 using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
 using BachelorsPhSalesProcessor.Infrastructure;
 using BachelorsPhSalesProcessor.Infrastructure.BrbRaw;
-using BachelorsPhSalesProcessor.Infrastructure.Dapper.Context;
+using BachelorsPhSalesProcessor.Infrastructure.Dapper.Extensions;
 using BachelorsPhSalesProcessor.Infrastructure.Sales;
 using BachelorsPhSalesProcessor.Services.BrbRaw;
 using Microsoft.EntityFrameworkCore;
@@ -40,11 +40,7 @@ namespace BachelorsPhSalesProcessor
                         options.UseSqlServer(brbRawConnectionString));
 
                     // Dapper contexts
-                    services.Configure<DapperContextOptions>("Sales", o => o.ConnectionString = connectionString);
-                    services.Configure<DapperContextOptions>("BrbRaw", o => o.ConnectionString = brbRawConnectionString);
-
-                    services.AddTransient<ISalesDapperContext, SalesDapperContext>();
-                    services.AddTransient<IBrbRawDapperContext, BrbRawDapperContext>();
+                    services.AddDapperContexts(context.Configuration);
 
                     // MediatR
                     services.AddMediatR(cfg =>
