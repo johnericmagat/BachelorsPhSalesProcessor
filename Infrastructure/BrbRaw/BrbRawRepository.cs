@@ -9,12 +9,12 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
 {
     public class BrbRawRepository : IBrbRawRepository
     {
-        private readonly IBrbRawDapperContext _context;
+        private readonly IBrbRawDapperContext _queryContext;
         private readonly ILogger<BrbRawRepository> _logger;
 
-        public BrbRawRepository(IBrbRawDapperContext context, ILogger<BrbRawRepository> logger)
+        public BrbRawRepository(IBrbRawDapperContext queryContext, ILogger<BrbRawRepository> logger)
         {
-            _context = context;
+            _queryContext = queryContext;
             _logger = logger;
         }
 
@@ -22,7 +22,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
         {
             try
             {
-                using (var connection = _context.Connection)
+                using (var connection = _queryContext.Connection)
                 {
                     var parameters = new DynamicParameters();
 
@@ -42,7 +42,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
         {
             try
             {
-                using (var connection = _context.Connection)
+                using (var connection = _queryContext.Connection)
                 {
                     var parameters = new DynamicParameters();
                     parameters.Add("@PublicId", publicId);
