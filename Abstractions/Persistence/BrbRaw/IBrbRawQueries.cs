@@ -1,6 +1,6 @@
 ﻿using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 
-namespace BachelorsPhSalesProcessor.Abstractions.Persistence
+namespace BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw
 {
     public interface IBrbRawQueries
     {

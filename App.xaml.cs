@@ -1,4 +1,4 @@
-﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
+﻿using BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw;
 using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
 using BachelorsPhSalesProcessor.Infrastructure;
 using BachelorsPhSalesProcessor.Infrastructure.BrbRaw;

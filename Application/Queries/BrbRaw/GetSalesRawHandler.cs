@@ -1,4 +1,4 @@
-﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
+﻿using BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw;
 using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using MediatR;
 

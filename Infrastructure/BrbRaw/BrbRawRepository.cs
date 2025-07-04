@@ -1,4 +1,5 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
+using BachelorsPhSalesProcessor.Abstractions.Persistence.BrbRaw;
 using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using Dapper;
 using Microsoft.Extensions.Logging;
@@ -25,7 +26,7 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
                 {
                     var parameters = new DynamicParameters();
 
-                    var salesRaw = (await connection.QueryAsync<SalesRawResponseDto>("GetSales", parameters, commandType: CommandType.StoredProcedure)).ToList();
+                    var salesRaw = (await connection.QueryAsync<SalesRawResponseDto>("GetSalesRaw", parameters, commandType: CommandType.StoredProcedure)).ToList();
 
                     return salesRaw;
                 }

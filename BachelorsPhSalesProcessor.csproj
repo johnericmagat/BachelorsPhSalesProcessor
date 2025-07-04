@@ -29,8 +29,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Abstractions\Persistence\Sales\" />
+    <Folder Include="Abstractions\Services\Sales\" />
     <Folder Include="Application\Commands\" />
+    <Folder Include="Application\Queries\Sales\" />
     <Folder Include="Mappings\" />
+    <Folder Include="Services\Sales\" />
   </ItemGroup>
 
   <ItemGroup>
