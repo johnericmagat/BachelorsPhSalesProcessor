@@ -47,9 +47,9 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
                     var parameters = new DynamicParameters();
                     parameters.Add("@PublicId", publicId);
 
-                    var salesRawDetail = (await connection.QueryAsync<SalesRawResponseDto>("GetSalesRawDetailByPublicId", parameters, commandType: CommandType.StoredProcedure)).ToList();
+                    var salesRawDetail = (await connection.QueryFirstOrDefaultAsync<SalesRawResponseDto>("GetSalesRawDetailByPublicId", parameters, commandType: CommandType.StoredProcedure));
 
-                    return salesRawDetail.FirstOrDefault();
+                    return salesRawDetail;
                 }
             }
             catch (Exception ex)

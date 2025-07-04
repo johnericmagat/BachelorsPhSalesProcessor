@@ -63,7 +63,7 @@ namespace BachelorsPhSalesProcessor
                     var salesPID = row["Sales PID"];
                     var salesRawDetailResult = await _salesRawService.GetSalesRawDetailByPublicIdAsync((string)salesPID);
 
-                    inserted++;
+                    if (salesRawDetailResult != null) inserted++;
                 }
                 else
                 {
