@@ -59,6 +59,10 @@ namespace BachelorsPhSalesProcessor
                     services.AddSingleton<MainWindow>();
                 })
                 .Build();
+
+            MigrateDatabaseExtension.MigrateDatabases(AppHost.Services,
+                typeof(SalesDbContext),
+                typeof(BrbRawDbContext));
         }
 
         protected override async void OnStartup(StartupEventArgs e)
