@@ -1,4 +1,4 @@
-﻿using BachelorsPhSalesProcessor.Dto.BrbRaw.Sales;
+﻿using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 
 namespace BachelorsPhSalesProcessor.Abstractions.Persistence
 {

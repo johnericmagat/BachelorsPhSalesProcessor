@@ -1,5 +1,5 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Persistence;
-using BachelorsPhSalesProcessor.Dto.BrbRaw.Sales;
+using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using MediatR;
 
 namespace BachelorsPhSalesProcessor.Application.Queries.BrbRaw

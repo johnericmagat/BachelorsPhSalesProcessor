@@ -1,6 +1,6 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
 using BachelorsPhSalesProcessor.Application.Queries.BrbRaw;
-using BachelorsPhSalesProcessor.Dto.BrbRaw.Sales;
+using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using MediatR;
 
 namespace BachelorsPhSalesProcessor.Services.BrbRaw

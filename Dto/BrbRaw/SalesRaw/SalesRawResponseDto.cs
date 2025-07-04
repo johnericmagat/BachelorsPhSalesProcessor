@@ -1,4 +1,4 @@
-﻿namespace BachelorsPhSalesProcessor.Dto.BrbRaw.Sales
+﻿namespace BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw
 {
     public class SalesRawResponseDto
     {
