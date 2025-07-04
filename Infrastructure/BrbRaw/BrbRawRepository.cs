@@ -37,5 +37,26 @@ namespace BachelorsPhSalesProcessor.Infrastructure.BrbRaw
                 throw;
             }
         }
+
+        public async Task<SalesRawResponseDto> GetSalesRawDetailByPublicIdAsync(string publicId)
+        {
+            try
+            {
+                using (var connection = _queryContext.DatabaseConnection)
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@PublicId", publicId);
+
+                    var salesRawDetail = (await connection.QueryAsync<SalesRawResponseDto>("GetSalesRawDetailByPublicId", parameters, commandType: CommandType.StoredProcedure)).ToList();
+
+                    return salesRawDetail.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
+        }
     }
 }

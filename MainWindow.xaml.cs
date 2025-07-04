@@ -1,10 +1,13 @@
 ﻿using BachelorsPhSalesProcessor.Abstractions.Services.BrbRaw;
+using BachelorsPhSalesProcessor.Dto.BrbRaw.SalesRaw;
 using CsvHelper;
 using CsvHelper.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
+using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows;
 using System.Windows.Threading;
 using DataTable = System.Data.DataTable;
@@ -46,8 +49,6 @@ namespace BachelorsPhSalesProcessor
             using var dr = new CsvDataReader(csv);
             sales.Load(dr);
 
-            var salesRawResult = await _salesRawService.GetSalesRawAsync();
-
             TxtRecords.Text = sales.Rows.Count.ToString();
 
             double count = 0;
@@ -55,12 +56,16 @@ namespace BachelorsPhSalesProcessor
             bool hasError = false;
             int errorCount = 0;
 
-            foreach (var item in sales.Rows)
+            foreach (DataRow row in sales.Rows)
             {
                 count = sales.Rows.Count;
 
                 if (!hasError)
                 {
+                    var salesPID = row["Sales PID"];
+                    var salesRawDetailResult = await _salesRawService.GetSalesRawDetailByPublicIdAsync((string)salesPID);
+
+
                     inserted++;
                 }
                 else

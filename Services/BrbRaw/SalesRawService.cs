@@ -21,5 +21,13 @@ namespace BachelorsPhSalesProcessor.Services.BrbRaw
 
             return result;
         }
+
+        public async Task<SalesRawResponseDto> GetSalesRawDetailByPublicIdAsync(string publicId)
+        {
+            var command = new GetSalesRawDetailByPublicIdQuery(publicId);
+            var result = await this._mediator.Send(command);
+
+            return result;
+        }
     }
 }
